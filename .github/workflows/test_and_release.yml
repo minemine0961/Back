@@ -50,4 +50,4 @@ jobs:
           commit: ${{ github.sha }}
           body: |
             Automated release created with the current timestamp (KST) as the tag.
-          artifacts: build/output/blog-dev-${{ env.tag }}.jar
+          artifacts: build/output/back-dev-${{ env.tag }}.jar
