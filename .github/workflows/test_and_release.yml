@@ -38,7 +38,8 @@ jobs:
       - name: Rename JAR file
         run: |
           mkdir -p build/output
-          mv build/libs/*.jar build/output/dev-${{ env.tag }}.jar # 원하는 이름으로 변경 
+          jar_file=$(ls build/libs/*.jar | grep -v "plain.jar" | head -n 1)
+          mv "$jar_file" "build/output/back-dev-${{ env.tag }}.jar" # 원하는 이름으로 변경 
 
       # 6. Release 생성 및 변경된 JAR 첨부
       - name: Create Release with JAR
