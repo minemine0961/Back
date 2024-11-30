@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-            
+
       - name: Give execute permission to gradlew
         run: chmod +x ./gradlew # gradlew에 실행 권한 부여    
 
@@ -34,7 +34,13 @@ jobs:
         run: |
           echo "tag=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
 
-      # 5. Release 생성 및 JAR 첨부
+      # 5. JAR 파일 이름 변경
+      - name: Rename JAR file
+        run: |
+          mkdir -p build/output
+          mv build/libs/*.jar build/output/dev-${{ env.tag }}.jar # 원하는 이름으로 변경 
+
+      # 6. Release 생성 및 변경된 JAR 첨부
       - name: Create Release with JAR
         uses: ncipollo/release-action@v1
         with:
@@ -43,4 +49,4 @@ jobs:
           commit: ${{ github.sha }}
           body: |
             Automated release created with the current timestamp (KST) as the tag.
-          artifacts: build/libs/*.jar
+          artifacts: build/output/blog-dev-${{ env.tag }}.jar
