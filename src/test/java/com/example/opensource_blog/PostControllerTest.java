@@ -5,8 +5,6 @@ import com.example.opensource_blog.domain.post.Post;
 import com.example.opensource_blog.domain.users.UserAccount;
 import com.example.opensource_blog.dto.request.PostRequestDTO;
 import com.example.opensource_blog.dto.response.PostResponseDTO;
-import com.example.opensource_blog.service.hashtag.HashTageService;
-import com.example.opensource_blog.service.hashtag.PostHashTageService;
 import com.example.opensource_blog.service.post.PostService;
 import com.example.opensource_blog.jwt.TokenProvider;
 import com.example.opensource_blog.service.user.UserInfo;
@@ -42,12 +40,6 @@ public class PostControllerTest {
 
 	@MockBean
 	private PostService postService;
-
-	@MockBean
-	private HashTageService hashTageService;
-
-	@MockBean
-	private PostHashTageService postHashTageService;
 
 	@MockBean
 	private TokenProvider tokenProvider;
