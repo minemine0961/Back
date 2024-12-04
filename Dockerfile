@@ -20,6 +20,10 @@ RUN jar_file=$(ls build/libs/*.jar | grep -v "plain.jar" | head -n 1) && \
 # 실행 단계
 FROM openjdk:21-slim
 
+# wait-for-it.sh 복사
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
 # 작업 디렉토리 설정
 WORKDIR /app
 
